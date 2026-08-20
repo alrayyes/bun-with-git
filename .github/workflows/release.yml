@@ -1,0 +1,35 @@
+# Nobody picks a version. release-please reads the Conventional Commits that
+# land on main and keeps a release pull request open carrying the next
+# version and the changelog entry; merging that pull request bumps
+# package.json, tags the release and writes the notes.
+#
+# One job, not two: this template has no build step and nothing binary to
+# attach — no goreleaser second job the way the Go scaffolds need one. A
+# real project built from this template that grows an artefact worth
+# releasing adds that job then, not here.
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# Never two releases at once, and never cancel one halfway: a killed run can
+# leave a tag pushed and nothing published against it.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # tags the release and writes it
+      pull-requests: write # keeps the release pull request up to date
+    steps:
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
