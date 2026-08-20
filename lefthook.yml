@@ -9,7 +9,7 @@
 pre-commit:
   jobs:
     - name: biome
-      glob: "*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,json,jsonc}"
+      glob: "*.{json,jsonc}"
       run: bunx biome check --write --no-errors-on-unmatched {staged_files}
       stage_fixed: true
 
@@ -29,6 +29,10 @@ pre-commit:
       glob: "package.json"
       run: bunx sort-package-json {staged_files}
       stage_fixed: true
+
+    - name: hadolint
+      glob: "Dockerfile"
+      run: docker compose run --rm hadolint hadolint --config .hadolint.yaml {staged_files}
 
     # Fast enough for a commit. LTeX is not — around ten seconds a file — so
     # mechanics run at push instead, where the wait is paid once rather than
@@ -55,11 +59,11 @@ commit-msg:
 pre-push:
   parallel: true
   jobs:
-    - name: test
-      run: bun test
-
     - name: biome
       run: bun run lint
+
+    - name: hadolint
+      run: docker compose run --rm hadolint hadolint --config .hadolint.yaml Dockerfile
 
     # These are `package.json` scripts rather than the commands spelled out,
     # because CI runs the same ones and a literal copied into two files drifts

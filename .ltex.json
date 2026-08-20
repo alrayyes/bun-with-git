@@ -2,12 +2,18 @@
   "ltex.language": "en-GB",
   "ltex.dictionary": {
     "en-GB": [
+      "Alpine",
+      "apk",
       "Biome",
       "biomejs",
+      "bun-with-git",
       "bunx",
       "commitlint",
       "Dependabot",
+      "Dockerfile",
       "Forgejo",
+      "ghcr",
+      "hadolint",
       "lefthook",
       "ltex-cli-plus",
       "ltex-ls-plus",
@@ -17,7 +23,7 @@
       "Renovate",
       "ruleset",
       "rulesets",
-      "scaffold-typescript-cli",
+      "semver",
       "toolchain",
       "toolchains"
     ]
@@ -36,7 +42,8 @@
       "PREPOSITION_VERB",
       "COMMA_COMPOUND_SENTENCE",
       "COMMA_COMPOUND_SENTENCE_2",
-      "OXFORD_SPELLING_Z_NOT_S"
+      "OXFORD_SPELLING_Z_NOT_S",
+      "LICENCE_LICENSE_NOUN_SINGULAR"
     ]
   }
 }
