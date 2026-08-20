@@ -50,7 +50,7 @@ jobs:
   commits:
     runs-on: docker
     container:
-      image: ghcr.io/alrayyes/bun-with-git:0.1.0@sha256:0000000000000000000000000000000000000000000000000000000000000
+      image: ghcr.io/alrayyes/bun-with-git:0.1.0@sha256:<digest-from-a-release>
     steps:
       - uses: actions/checkout@v4
         with:
