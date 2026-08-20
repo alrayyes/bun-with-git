@@ -4,11 +4,28 @@
 # request about.
 #
 # Two pins Dependabot can't see, and which are updated by hand: the Vale
-# version in prose.yml/CONTRIBUTING.md and the gitleaks version in
-# gitleaks.yml. Neither lives anywhere Dependabot's ecosystems look.
+# version in prose.yml/CONTRIBUTING.md and the hadolint version in
+# compose.yaml. Neither lives anywhere Dependabot's ecosystems look.
 version: 2
 
 updates:
+  # The only ecosystem that changes what this repo ships: a base image bump
+  # is a change to the published artefact, so it gets fix:, not chore: —
+  # the same reasoning the release workflow's header comment gives for
+  # treating a base image patch as release-worthy.
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Amsterdam
+    commit-message:
+      prefix: fix
+      include: scope
+
+  # Dev tooling only — the linter and its dependencies never end up in the
+  # image, so a bump here is housekeeping, not a change to what ships.
   - package-ecosystem: bun
     directory: /
     schedule:
@@ -18,13 +35,7 @@ updates:
       timezone: Europe/Amsterdam
     open-pull-requests-limit: 10
     commit-message:
-      # Conventional Commits, because commitlint checks these messages and
-      # the version number is computed from them. This scaffold ships as a
-      # TypeScript CLI, so a bump here is a change to what ships whether or
-      # not it's security-relevant, and fix: cuts the patch release the same
-      # way any other fix does. github-actions below stays ci: — it changes
-      # the pipeline, not the artifact.
-      prefix: fix
+      prefix: chore
       include: scope
     groups:
       bun-dependencies:

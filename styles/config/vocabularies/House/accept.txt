@@ -31,6 +31,7 @@ automerge
 CI
 YAML
 JSON
+semver
 
 # Not "TypeScript" or "CLI": both are substrings of this repo's own name,
 # scaffold-typescript-cli, and Vale.Terms would flag the lowercase form in

@@ -1,0 +1,8 @@
+# DL3018 wants a version on every apk package. This image can't give it one: an
+# apk version belongs to the Alpine branch the base image is built on, not to
+# the Dockerfile, and a base image bump that crosses a branch boundary turns a
+# pin into a build failure. Alpine keeps one build of each package per branch
+# and prunes the rest, so nothing can bump the pin in step. Same reasoning as
+# alrayyes/deploy-ssh's .hadolint.yaml, which this repo follows for shape.
+ignored:
+  - DL3018

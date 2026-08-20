@@ -1,13 +1,11 @@
 # Contributing
 
-This file is for whoever changes this template. The [README](README.md) is
-for whoever stamps a project out of it.
-
 ## Getting set up
 
-- **[bun](https://bun.sh) 1.3 or newer.** Runtime, test runner, package
-  manager for the linter, and the [lefthook](https://lefthook.dev) that
-  runs the git hooks — bun is the only thing to install.
+- **[bun](https://bun.sh) 1.3 or newer.** Runtime for the linter and the
+  [lefthook](https://lefthook.dev) that runs the git hooks.
+- **A container runtime** (Docker or compatible) to build the image and run
+  `hadolint` locally through `compose.yaml`.
 - **[Vale](https://vale.sh)** on your `PATH`, for the style tier of the
   prose lint:
 
@@ -34,9 +32,8 @@ Every one of these is what a hook or CI runs — see `lefthook.yml` and
 `.github/workflows/*.yml` for exactly which.
 
 ```sh
-bun run start               # bun run index.ts
-bun test
-bun test --coverage         # bun writes the table to stderr, not stdout
+docker build --pull -t bun-with-git:local .
+docker compose run --rm hadolint hadolint --config .hadolint.yaml Dockerfile
 
 bun run lint                # biome check ., the check-only form
 bun run format               # biome check --write ., the fixer
@@ -49,11 +46,11 @@ bun run lint:mechanics      # ltex-cli-plus
 
 ## How it fits together
 
-One entry script, `index.ts`, run directly with `bun run index.ts` — no
-build step, no framework, no `ts-node`/`tsx`. `index.test.ts` sits next to
-it and uses `bun:test`. There's nothing else to structure yet: a real
-project stamped from this template grows files as it needs them, not ahead
-of time.
+One `Dockerfile`. No entry point, no runtime code — the image exists to be
+a container other jobs run in, not to run anything itself. CI asserts what
+it needs to (`git`, `ca-certificates`, `bun` itself) resolve inside it on
+every build, the same way [deploy-ssh](https://github.com/alrayyes/deploy-ssh)
+does for its own package list.
 
 ## Commit messages
 
@@ -64,15 +61,20 @@ lowercase, no trailing full stop. commitlint enforces the shape at
 commit-msg and again in CI; the length and case rules are tighter than what
 it checks, so hold to them anyway.
 
+A base image bump is `fix(deps):`, not `chore(deps):` — the base image is
+what this repo ships, so a bump to it is a change to the artefact, not
+housekeeping.
+
 ## Branching, review, and release
 
 Every change goes through a pull request — nothing is pushed straight to
-`main`, including the bootstrapping that built this repo. GitHub's branch
-protection needs a paid plan this account doesn't have, so nothing enforces
-that mechanically here; it's discipline, not a gate.
+`main`. GitHub's branch protection needs a paid plan this account doesn't
+have, so nothing enforces that mechanically here; it's discipline, not a
+gate.
 
 Once a pull request's checks are green, squash-merge it and delete the
 branch. [release-please](https://github.com/googleapis/release-please)
 reads the Conventional Commits on `main` and keeps a release pull request
 open with the next version and changelog entry; merging that one tags the
-release. Nobody picks a version by hand.
+release, builds the image, and pushes it to `ghcr.io`. Nobody picks a
+version by hand.
