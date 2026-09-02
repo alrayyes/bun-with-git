@@ -69,9 +69,9 @@ housekeeping.
 ## Branching, review, and release
 
 Every change goes through a pull request — nothing is pushed straight to
-`main`. GitHub's branch protection needs a paid plan this account doesn't
-have, so nothing enforces that mechanically here; it's discipline, not a
-gate.
+`main`. Branch protection on `main` requires every CI job green (no human
+review) before a merge goes through, so this is enforced mechanically, not
+just discipline.
 
 Once a pull request's checks are green, squash-merge it and delete the
 branch. [release-please](https://github.com/googleapis/release-please)
