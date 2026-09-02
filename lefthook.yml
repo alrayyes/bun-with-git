@@ -34,6 +34,12 @@ pre-commit:
       glob: "Dockerfile"
       run: docker run --rm -v "$PWD:/app" -w /app hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config .hadolint.yaml {staged_files}
 
+    # Hadolint reads the Dockerfile as text; this proves it still builds.
+    # Tagged and removed so a commit doesn't leave an untagged image behind.
+    - name: docker build
+      glob: "Dockerfile"
+      run: docker build -t bun-with-git:pre-commit-check . && docker rmi bun-with-git:pre-commit-check
+
     # Fast enough for a commit. LTeX is not — around ten seconds a file — so
     # mechanics run at push instead, where the wait is paid once rather than
     # per commit.
@@ -64,6 +70,11 @@ pre-push:
 
     - name: hadolint
       run: docker run --rm -v "$PWD:/app" -w /app hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config .hadolint.yaml Dockerfile
+
+    # Unconditional, unlike pre-commit's glob-scoped copy: the check nothing
+    # gets past regardless of what changed.
+    - name: docker build
+      run: docker build -t bun-with-git:pre-push-check . && docker rmi bun-with-git:pre-push-check
 
     # These are `package.json` scripts rather than the commands spelled out,
     # because CI runs the same ones and a literal copied into two files drifts
