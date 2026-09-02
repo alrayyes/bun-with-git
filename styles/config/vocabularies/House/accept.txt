@@ -32,6 +32,23 @@ CI
 YAML
 JSON
 semver
+Dockerfile
+hadolint
+hadolint's
+gitleaks
+proselint
+config
+backfill(s|ed|ing)?
+restage(s|d)?
+textareas?
+devDependenc(y|ies)
+unbuildable
+misformatted
+hardcoded
+Prettier
+Prettier's
+ci-checkout-image
+dockerfile-checks
 
 # Not "TypeScript" or "CLI": both are substrings of this repo's own name,
 # scaffold-typescript-cli, and Vale.Terms would flag the lowercase form in
