@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/alrayyes/bun-with-git/compare/0.1.4...0.1.5) (2026-09-02)
+
+
+### Bug Fixes
+
+* add dependency-review-action now that the repo is public ([#28](https://github.com/alrayyes/bun-with-git/issues/28)) ([580921e](https://github.com/alrayyes/bun-with-git/commit/580921e5190102434cfe01d32520ccfe3b3f1366))
+
 ## [0.1.4](https://github.com/alrayyes/bun-with-git/compare/0.1.3...0.1.4) (2026-09-02)
 
 
