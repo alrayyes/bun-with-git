@@ -32,7 +32,7 @@ pre-commit:
 
     - name: hadolint
       glob: "Dockerfile"
-      run: docker compose run --rm hadolint hadolint --config .hadolint.yaml {staged_files}
+      run: docker run --rm -v "$PWD:/app" -w /app hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config .hadolint.yaml {staged_files}
 
     # Fast enough for a commit. LTeX is not — around ten seconds a file — so
     # mechanics run at push instead, where the wait is paid once rather than
@@ -63,7 +63,7 @@ pre-push:
       run: bun run lint
 
     - name: hadolint
-      run: docker compose run --rm hadolint hadolint --config .hadolint.yaml Dockerfile
+      run: docker run --rm -v "$PWD:/app" -w /app hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config .hadolint.yaml Dockerfile
 
     # These are `package.json` scripts rather than the commands spelled out,
     # because CI runs the same ones and a literal copied into two files drifts

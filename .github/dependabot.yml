@@ -5,7 +5,8 @@
 #
 # Two pins Dependabot can't see, and which are updated by hand: the Vale
 # version in prose.yml/CONTRIBUTING.md and the hadolint version in
-# compose.yaml. Neither lives anywhere Dependabot's ecosystems look.
+# lefthook.yml/CONTRIBUTING.md. Neither lives anywhere Dependabot's
+# ecosystems look.
 version: 2
 
 updates:
