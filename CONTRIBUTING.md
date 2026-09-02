@@ -5,7 +5,7 @@
 - **[bun](https://bun.sh) 1.3 or newer.** Runtime for the linter and the
   [lefthook](https://lefthook.dev) that runs the git hooks.
 - **A container runtime** (Docker or compatible) to build the image and run
-  `hadolint` locally through `compose.yaml`.
+  `hadolint` locally against it.
 - **[Vale](https://vale.sh)** on your `PATH`, for the style tier of the
   prose lint:
 
@@ -33,7 +33,7 @@ Every one of these is what a hook or CI runs — see `lefthook.yml` and
 
 ```sh
 docker build --pull -t bun-with-git:local .
-docker compose run --rm hadolint hadolint --config .hadolint.yaml Dockerfile
+docker run --rm -v "$PWD:/app" -w /app hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config .hadolint.yaml Dockerfile
 
 bun run lint                # biome check ., the check-only form
 bun run format               # biome check --write ., the fixer
