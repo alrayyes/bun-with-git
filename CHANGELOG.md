@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/alrayyes/bun-with-git/compare/0.1.3...0.1.4) (2026-09-02)
+
+
+### Bug Fixes
+
+* run bun audit in CI and pre-push ([#26](https://github.com/alrayyes/bun-with-git/issues/26)) ([d3b15e2](https://github.com/alrayyes/bun-with-git/commit/d3b15e2c44e1e6f2f85f7b160619ef61f5a0811d))
+
 ## [0.1.3](https://github.com/alrayyes/bun-with-git/compare/0.1.2...0.1.3) (2026-09-02)
 
 
