@@ -33,6 +33,8 @@ jobs:
         run: bun run lint
       - name: sort-package-json --check
         run: bun run sort-package-json:check
+      - name: bun audit
+        run: bun run audit
 
   dockerfile:
     runs-on: ubuntu-24.04
