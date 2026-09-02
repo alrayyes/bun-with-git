@@ -41,6 +41,22 @@ compatibility shim, which is what `actions/checkout` (a JavaScript action)
 needs to run in the first place. This image adds only what that base is
 missing.
 
+## Runs as root, on purpose
+
+No `USER` instruction — every consumer of this image runs as root, and
+that's deliberate rather than an oversight. This image exists to be a CI
+job's `container:` context, where the runner bind-mounts
+`/github/workspace` from the host already owned by whatever UID the
+runner itself runs as. A container's non-root user only gets write access
+to that mount if its UID happens to match the runner's — confirmed
+directly: a container running as an arbitrary non-root UID gets `Permission
+denied` writing into a directory owned by a different UID, the same
+mismatch `actions/checkout` would hit here. Nothing in this image, or in
+any consumer's workflow, can predict or control which UID a given
+runner — hosted or self-hosted — actually uses, so there's no non-root UID
+that's safe to pin here. Root is the one identity guaranteed to have
+write access to whatever the runner mounts.
+
 ## Using it
 
 As the container a CI job runs in:
