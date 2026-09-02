@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/alrayyes/bun-with-git/compare/0.1.5...1.0.0) (2026-09-02)
+
+
+### Miscellaneous Chores
+
+* relicense to MIT and graduate to 1.0.0 ([#34](https://github.com/alrayyes/bun-with-git/issues/34)) ([801fd39](https://github.com/alrayyes/bun-with-git/commit/801fd395f4419d8216ae9d69ef9f5aee3468a0ad)), closes [#33](https://github.com/alrayyes/bun-with-git/issues/33)
+
 ## [0.1.5](https://github.com/alrayyes/bun-with-git/compare/0.1.4...0.1.5) (2026-09-02)
 
 
