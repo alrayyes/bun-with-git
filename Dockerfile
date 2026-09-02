@@ -19,3 +19,8 @@ FROM oven/bun:1.4.0-alpine@sha256:07235578f79ef8c6f97d94aee7938e76f5cdba5f21ae5d
 RUN apk add --no-cache \
         ca-certificates \
         git
+
+# No USER instruction — deliberate, not an oversight. See README's "Runs as
+# root, on purpose": a non-root UID here can't be guaranteed to match
+# whatever UID the runner mounting /github/workspace actually uses, and a
+# mismatch means actions/checkout can't write into it at all.
