@@ -1,6 +1,6 @@
 {
   "name": "bun-with-git",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "description": "oven/bun with git and ca-certificates baked in, for CI checkout jobs",
   "bugs": {
