@@ -88,6 +88,9 @@ pre-push:
     - name: sort-package-json
       run: bun run sort-package-json:check
 
+    - name: bun audit
+      run: bun run audit
+
     # Every other linter here runs at commit, at push and in CI. Vale ran at
     # commit and then nothing until CI, because its invocation lived in the
     # workflow as a block of bash with nothing a hook could reuse. It is a

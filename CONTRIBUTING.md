@@ -42,6 +42,7 @@ bun run format:check        # prettier --check, add --write to fix
 bun run lint:md
 bun run lint:prose          # vale
 bun run lint:mechanics      # ltex-cli-plus
+bun run audit               # bun audit
 ```
 
 ## How it fits together
