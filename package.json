@@ -7,7 +7,7 @@
     "url": "https://github.com/alrayyes/bun-with-git/issues"
   },
   "repository": "https://github.com/alrayyes/bun-with-git",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "author": "Ryan Kes <511318+alrayyes@users.noreply.github.com>",
   "scripts": {
     "audit": "bun audit",

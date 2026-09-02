@@ -3,7 +3,7 @@
 [![CI](https://github.com/alrayyes/bun-with-git/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alrayyes/bun-with-git/actions/workflows/ci.yml)
 [![release](https://img.shields.io/github/v/release/alrayyes/bun-with-git?sort=semver)](https://github.com/alrayyes/bun-with-git/releases/latest)
 [![image](https://img.shields.io/badge/ghcr.io-bun--with--git-2496ED?logo=docker&logoColor=white)](https://github.com/alrayyes/bun-with-git/pkgs/container/bun-with-git)
-[![licence](https://img.shields.io/badge/licence-GPL--3.0--or--later-blue)](LICENSE)
+[![licence](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
 
 `oven/bun`'s Alpine image with `git` and `ca-certificates` added, so CI jobs
 that check out a repository stop installing them on every run.
@@ -80,7 +80,11 @@ land on `main` and keeps a release pull request open carrying the next
 version and the changelog entry. Merging it tags the release, and the same
 run builds the image, pushes it, and attests it.
 
-Tags are bare semver — `0.1.0`, not `v0.1.0`.
+Tags are bare semver — `1.0.0`, not `v1.0.0`.
+
+`1.0.0` marks this image stable: the package list and the tag/digest
+publishing shape in [Using it](#using-it) don't change without a major
+version bump.
 
 A base image bump raises `fix(deps):` rather than `chore(deps):` on purpose. A
 patched Alpine has to cut a release, or the fix never becomes an image anyone
@@ -93,4 +97,4 @@ a change gets released.
 
 ## Licence
 
-GPL-3.0-or-later. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
