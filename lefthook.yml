@@ -97,6 +97,15 @@ pre-push:
     - name: sort-package-json
       run: bun run sort-package-json:check
 
+    # --ignore=GHSA-7w5x-hrqm-74c2 lives in the `audit` script itself
+    # (package.json), not spelled out here, for the same drift reason as
+    # the comment above: it's smol-toml, a transitive dep of
+    # markdownlint-cli2 that's pinned to an exact vulnerable version
+    # upstream (0.23.2, the latest release as of this writing) with no
+    # fixed release to move to. Low real-world exposure — it only parses
+    # this repo's own Markdown front matter, never attacker-controlled
+    # input, and never ships in the image. Drop the ignore once
+    # markdownlint-cli2 depends on a fixed smol-toml. Tracked in #48.
     - name: bun audit
       run: bun run audit
 
