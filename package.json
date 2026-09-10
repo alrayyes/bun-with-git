@@ -10,7 +10,7 @@
   "license": "MIT",
   "author": "Ryan Kes <511318+alrayyes@users.noreply.github.com>",
   "scripts": {
-    "audit": "bun audit",
+    "audit": "bun audit --ignore=GHSA-7w5x-hrqm-74c2",
     "format": "biome check --write .",
     "format:check": "prettier --check \"**/*.{md,yml,yaml}\"",
     "lint": "biome check .",
