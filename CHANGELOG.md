@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.1](https://github.com/alrayyes/bun-with-git/compare/1.0.0...1.0.1) (2026-09-11)
+
+
+### Bug Fixes
+
+* **ci:** use RELEASE_TOKEN for dependabot auto-merge ([#50](https://github.com/alrayyes/bun-with-git/issues/50)) ([320465b](https://github.com/alrayyes/bun-with-git/commit/320465baea2ef466ddd11f1b2e535a8bb1b970d0)), closes [#47](https://github.com/alrayyes/bun-with-git/issues/47)
+* **deps:** bump js-yaml and ignore unfixable smol-toml advisory ([#49](https://github.com/alrayyes/bun-with-git/issues/49)) ([5337547](https://github.com/alrayyes/bun-with-git/commit/53375475593d882efcdaff2dc4272ded62331ab2)), closes [#48](https://github.com/alrayyes/bun-with-git/issues/48)
+* **deps:** bump oven/bun from 1.4.0-alpine to 1.4.2-alpine ([#44](https://github.com/alrayyes/bun-with-git/issues/44)) ([34f35ab](https://github.com/alrayyes/bun-with-git/commit/34f35ab11efa31f096a7651fc6d2141f1535f63f))
+
 ## [1.0.0](https://github.com/alrayyes/bun-with-git/compare/0.1.5...1.0.0) (2026-09-02)
 
 
