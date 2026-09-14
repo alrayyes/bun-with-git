@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/alrayyes/bun-with-git/compare/1.0.1...1.0.2) (2026-09-14)
+
+
+### Bug Fixes
+
+* **ci:** use GITHUB_TOKEN for Dependabot auto-merge, not RELEASE_TOKEN ([#54](https://github.com/alrayyes/bun-with-git/issues/54)) ([f574452](https://github.com/alrayyes/bun-with-git/commit/f574452083f340e4d7523cf0c58356138293556b)), closes [#53](https://github.com/alrayyes/bun-with-git/issues/53)
+
 ## [1.0.1](https://github.com/alrayyes/bun-with-git/compare/1.0.0...1.0.1) (2026-09-11)
 
 
