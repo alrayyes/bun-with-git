@@ -35,11 +35,16 @@ jobs:
       # together for the same reason. A major stays a pull request someone
       # reads, the same as any other breaking change would.
       #
-      # RELEASE_TOKEN, not the default GITHUB_TOKEN: same reasoning as
-      # release-auto-merge.yml. GitHub suppresses the push event a
-      # GITHUB_TOKEN-performed merge produces, which would otherwise leave
-      # ci.yml, gitleaks.yml, prose.yml and release.yml's own `push`
-      # triggers never firing for the commit this merge puts on main.
+      # The default GITHUB_TOKEN, not RELEASE_TOKEN: GitHub never passes a
+      # custom Actions secret to a Dependabot-triggered run (only the
+      # automatic token and Dependabot's own separate secrets store) —
+      # RELEASE_TOKEN always resolved empty here, failing the merge outright
+      # (confirmed live, #53). GITHUB_TOKEN is the token this file's own top
+      # comment already says GitHub elevates for a pull_request event
+      # actor'd by dependabot[bot] specifically; it not retriggering
+      # push-gated workflows the way release-auto-merge.yml's RELEASE_TOKEN
+      # does is a real tradeoff, but the alternative is a merge step that
+      # never runs at all.
       - name: Enable auto-merge for patch and minor updates
         if: |
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
@@ -47,4 +52,4 @@ jobs:
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
-          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
