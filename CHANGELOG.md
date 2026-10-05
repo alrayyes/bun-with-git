@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/alrayyes/bun-with-git/compare/1.0.2...1.0.3) (2026-10-05)
+
+
+### Bug Fixes
+
+* **deps:** clear fast-uri and braces audit failures ([#62](https://github.com/alrayyes/bun-with-git/issues/62)) ([87c9fec](https://github.com/alrayyes/bun-with-git/commit/87c9fec012c3bd20b16646c408b7db8b9e19999d)), closes [#61](https://github.com/alrayyes/bun-with-git/issues/61)
+
 ## [1.0.2](https://github.com/alrayyes/bun-with-git/compare/1.0.1...1.0.2) (2026-09-14)
 
 
