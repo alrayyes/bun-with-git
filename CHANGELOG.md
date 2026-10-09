@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/alrayyes/bun-with-git/compare/1.0.3...1.0.4) (2026-10-09)
+
+
+### Bug Fixes
+
+* **hooks:** drop docker build from pre-commit ([#65](https://github.com/alrayyes/bun-with-git/issues/65)) ([363c558](https://github.com/alrayyes/bun-with-git/commit/363c558d6a94069fe26c056435fb18dcc0d69ac4))
+
 ## [1.0.3](https://github.com/alrayyes/bun-with-git/compare/1.0.2...1.0.3) (2026-10-05)
 
 
