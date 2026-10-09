@@ -21,6 +21,10 @@
     "sort-package-json": "sort-package-json",
     "sort-package-json:check": "sort-package-json --check"
   },
+  "overrides": {
+    "katex": "0.18.11",
+    "smol-toml": "1.9.1"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
     "@commitlint/cli": "21.2.3",
