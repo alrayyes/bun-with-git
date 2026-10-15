@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/alrayyes/bun-with-git/compare/1.0.4...1.0.5) (2026-10-15)
+
+
+### Bug Fixes
+
+* **ci:** run release-auto-merge when the autorelease label is added ([#70](https://github.com/alrayyes/bun-with-git/issues/70)) ([0ccb89e](https://github.com/alrayyes/bun-with-git/commit/0ccb89e35117c125528947292c4d4a0e9071200c)), closes [#69](https://github.com/alrayyes/bun-with-git/issues/69)
+
 ## [1.0.4](https://github.com/alrayyes/bun-with-git/compare/1.0.3...1.0.4) (2026-10-09)
 
 
