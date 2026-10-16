@@ -8,16 +8,35 @@ actually uses.
 
 ## Requirements
 
-### Requirement: bun audit runs on every push
+### Requirement: bun audit blocks only what a pull request introduces
 
-`bun audit` SHALL run in pre-push and in CI, separate from whatever raises
-the update pull request, and fail on a reported vulnerability.
+No git hook SHALL run `bun audit`, since it cannot compare base and head. In CI,
+the `audit` job SHALL run `alrayyes/advisory-scan` in gate mode whenever
+`package.json` or `bun.lock` changed, and fail only on advisories the pull
+request adds over its base. No pipeline SHALL ignore an advisory.
 
-#### Scenario: A vulnerable devDependency fails CI
+#### Scenario: A pull request adds a vulnerable devDependency
 
-- **WHEN** `bun.lock` pins a package with a known advisory
-- **THEN** `bun run audit` fails both the pre-push hook and the CI `lint`
-  job
+- **WHEN** a pull request's `bun.lock` pins a package with an advisory the base
+  `bun.lock` doesn't have
+- **THEN** the CI `audit` job fails
+
+#### Scenario: Advisory already on main
+
+- **WHEN** a pull request leaves the advisories as they were
+- **THEN** the CI `audit` job passes
+
+### Requirement: A scan keeps one ticket for the advisories already present
+
+`advisory-scan.yml` SHALL audit `main` daily, on a push that changes
+`package.json` or `bun.lock`, and on demand, and keep one open issue titled
+`Dependency advisories` that lists them. It SHALL close the issue when the
+audit is clean.
+
+#### Scenario: Advisory published against a pinned version
+
+- **WHEN** the daily scan finds an advisory
+- **THEN** the `Dependency advisories` issue is created or updated
 
 ### Requirement: Dependabot watches every ecosystem this repo uses
 

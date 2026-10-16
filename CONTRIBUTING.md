@@ -42,8 +42,19 @@ bun run format:check        # prettier --check, add --write to fix
 bun run lint:md
 bun run lint:prose          # vale
 bun run lint:mechanics      # ltex-cli-plus
-bun run audit               # bun audit
 ```
+
+CI's `audit` job fails a pull request only for advisories that pull request adds
+to `bun.lock`. What is already on `main` is tracked by `advisory-scan.yml`,
+which keeps one open issue titled `Dependency advisories` and closes it when the
+audit is clean. Nothing is ignored, so a finding with no patched release stays
+in that issue until one ships.
+
+`dependency-review` still runs as well: it reads the dependency graph, which
+covers the GitHub Actions and Docker pins that `bun.lock` doesn't.
+
+No hook runs the audit: it can't compare base and head, so it would fail on
+advisories already on `main`. To run it by hand, use `bun run audit`.
 
 ## How it fits together
 
