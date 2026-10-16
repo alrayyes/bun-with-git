@@ -11,9 +11,9 @@ actually uses.
 ### Requirement: bun audit blocks only what a pull request introduces
 
 No git hook SHALL run `bun audit`, since it cannot compare base and head. In CI,
-the `audit` job SHALL run `alrayyes/advisory-scan` in gate mode whenever `package.json` or `bun.lock`
-changed, and fail only on advisories the pull request adds over its base. No
-pipeline SHALL ignore an advisory.
+the `audit` job SHALL run `alrayyes/advisory-scan` in gate mode whenever
+`package.json` or `bun.lock` changed, and fail only on advisories the pull
+request adds over its base. No pipeline SHALL ignore an advisory.
 
 #### Scenario: A pull request adds a vulnerable devDependency
 
