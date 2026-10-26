@@ -67,7 +67,7 @@ jobs:
       # write:package, so publishing there needs a hand-minted user token
       # rotated by hand. See git.higherlearning.eu/alrayyes/migrate-from-
       # gitlab-to-forgejo#70.
-      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
