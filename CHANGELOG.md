@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.6](https://github.com/alrayyes/bun-with-git/compare/1.0.5...1.0.6) (2026-10-26)
+
+
+### Bug Fixes
+
+* **deps:** bump oven/bun from 1.4.2-alpine to 1.4.3-alpine ([#77](https://github.com/alrayyes/bun-with-git/issues/77)) ([95db828](https://github.com/alrayyes/bun-with-git/commit/95db8283fd9bb7b82166d61b9303bc307591cab6))
+* **deps:** bump oven/bun from 1.4.3-alpine to 1.4.4-alpine ([#79](https://github.com/alrayyes/bun-with-git/issues/79)) ([b7afdce](https://github.com/alrayyes/bun-with-git/commit/b7afdce4a51161753f05c36413ef62e563131c7a))
+* **lint:** leave markdown to prettier in biome ([#83](https://github.com/alrayyes/bun-with-git/issues/83)) ([8dedaf6](https://github.com/alrayyes/bun-with-git/commit/8dedaf60c7ca1dafd350a558850dd01ac457f832)), closes [#82](https://github.com/alrayyes/bun-with-git/issues/82)
+
 ## [1.0.5](https://github.com/alrayyes/bun-with-git/compare/1.0.4...1.0.5) (2026-10-15)
 
 
