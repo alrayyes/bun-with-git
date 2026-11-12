@@ -14,7 +14,9 @@
   ```
 
   `ltex-cli-plus` needs nothing installed: the hook fetches and caches it
-  on first use.
+  on first use. The pre-push hook checks only the Markdown in your push, and
+  all of it when `.ltex.json` or `scripts/lint-mechanics.sh` changed. CI, and
+  `bun run lint:mechanics` by hand, check every document.
 
 One command installs the linter, the git hooks, and their dependencies:
 
